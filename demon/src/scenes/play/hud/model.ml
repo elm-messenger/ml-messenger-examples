@@ -31,7 +31,9 @@ let actions =
   [ (Undo, ("Z", "Undo")); (Restart, ("R", "Reset")); (Thermal, ("T", "Heat links")); (Levels, ("Esc", "Levels")) ]
 
 let init _runtime _env info =
-  let chips = Widgets.chips_from_right ~right:1248. ~y:19. ~h:34. (List.map snd actions) in
+  let chips =
+    Widgets.chips_from_right ~right:(Settings.gear.x -. 10.) ~y:19. ~h:34. (List.map snd actions)
+  in
   {
     info;
     report = { moves = 0; status = Rules.Playing; can_undo = false; thermal = false };

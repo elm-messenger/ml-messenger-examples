@@ -77,5 +77,6 @@ let input : User_data.t Ui.input =
     config;
     resources;
     scenes;
-    global_components = [ Progress.gc; Messenger_extra.Asset_loading.gen_gc () ];
+    (* the loading screen last: drawn over the settings gear until done *)
+    global_components = [ Progress.gc; Settings.gc; Messenger_extra.Asset_loading.gen_gc () ];
   }

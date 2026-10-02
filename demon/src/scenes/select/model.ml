@@ -155,14 +155,15 @@ let view runtime env d =
     [
       clear Pal.ink;
       textbox (44., 26.) 50. "Choose an experiment" Widgets.display Pal.cream;
-      Widgets.mono_text (1240. -. Widgets.mono_width 14. (Printf.sprintf "SOLVED %d / %d" solved Levels.count), 58.)
-        14. (Printf.sprintf "SOLVED %d / %d" solved Levels.count) Pal.gold;
+      (let text = Printf.sprintf "SOLVED %d / %d" solved Levels.count in
+       (* left of the settings gear *)
+       Widgets.mono_text (Settings.gear.x -. 16. -. Widgets.mono_width 14. text, 58.) 14. text Pal.gold);
       header 132. "WORLD I" "Conduction  ·  27 experiments";
       header 356. "WORLD II" "Glass  ·  30 experiments";
       Component.view_components runtime cenv d.tiles;
       preview d u;
       Widgets.mono_centered (640., 690.) 13.
-        "ARROWS choose  ·  ENTER start  ·  ESC title" Pal.cream_dim;
+        "ARROWS choose  ·  ENTER start  ·  O settings  ·  ESC title" Pal.cream_dim;
     ]
 
 let scene params runtime env = Scene.abstract { init; update; view } params runtime env

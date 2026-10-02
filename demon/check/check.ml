@@ -1,5 +1,6 @@
 (* Plays the game through Ui.update: title -> level 1-1 -> solve it -> banner,
-   progress recorded; a death and its undo on 1-15; the select screen. Drawn
+   progress recorded; a death and its undo on 1-15; the select screen; the
+   settings panel (volume, keys kept from the board, erasing progress). Drawn
    text is checked in the encoded frame (textbox strings are verbatim). *)
 
 open Ml_regl_core
@@ -61,6 +62,10 @@ let () =
   let m = ticks (load_levels m) 100. in
   check "starts on the title" (scene m = "Title");
   check "title offers Start" (draws m "Start");
+  let m = ticks (press m "Escape") 300. in
+  check "Esc on the title opens the settings" (scene m = "Title" && draws m "VOLUME");
+  let m = ticks (press m "Escape") 300. in
+  check "Esc closes them again" (not (draws m "VOLUME"));
   let m = ticks (press m "Return") 800. in
   check "Enter starts a level" (scene m = "Play");
   check "level 1-1 is shown" (draws m "1-1" && draws m "000");
@@ -87,4 +92,26 @@ let () =
   check "undo from the banner revives it" ((not (draws m "Overheated!")) && draws m "005");
   let m = ticks (press m "R") 400. in
   check "reset goes back to the start" (draws m "000");
+  (* the settings panel, over the level *)
+  let saved m = Base.get_local_value Game.Settings.storage_key m.Model.runtime in
+  let m = ticks (press m "O") 300. in
+  check "O opens the settings over the level" (scene m = "Play" && draws m "VOLUME" && draws m "100%");
+  let m = ticks (press m "Left") 300. in
+  check "Left lowers the volume" (draws m "90%" && Base.get_volume m.Model.runtime = 0.9);
+  check "the keys do not reach the board" (draws m "000");
+  check "the volume is saved" (saved m = Some "volume=90;fullscreen=0");
+  let m = ticks (press m "Escape") 300. in
+  check "Esc closes the panel, not the level" (scene m = "Play" && not (draws m "VOLUME"));
+  let m = ticks (press m "D") 300. in
+  check "the board has the keys back" (draws m "001");
+  let m = ticks (press m "O") 300. in
+  let m = List.fold_left press m [ "Down"; "Down"; "Return" ] in
+  let m = ticks m 100. in
+  check "Erase asks first" (draws m "Press again to erase" && (user m).best <> []);
+  let m = ticks (press m "Return") 100. in
+  check "the second press erases the progress"
+    ((user m).best = [] && draws m "Nothing to erase");
+  let m = ticks (press m "Escape") 300. in
+  let m = ticks (press m "Escape") 800. in
+  check "the select screen shows the reset" (scene m = "Select" && draws m "SOLVED 0 / 57");
   if !failures > 0 then exit 1

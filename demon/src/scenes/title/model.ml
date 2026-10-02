@@ -1,5 +1,6 @@
 (* The title: the demon guarding the door between a cold and a hot chamber,
-   and two buttons (continue where you left off, or pick a level). *)
+   and two buttons (continue where you left off, or pick a level). Esc opens
+   the settings. *)
 
 open Ml_regl_core
 open Messenger
@@ -41,6 +42,7 @@ let update _runtime env evnt d =
       ({ d with focus = 1 - d.focus }, [ Sfx.play "select" ], env)
   | KeyDown ("Return" | "Space" | "KP Enter") -> (d, pick d.focus, env)
   | KeyDown "L" -> (d, pick 1, env)
+  | KeyDown "Escape" -> (d, [ Scene.SOMCallGC (Settings.key, Settings.Open) ], env)
   | _ -> (d, [], env)
 
 (* Fold [u] into [0, w] by reflecting at both ends: a bouncing coordinate. *)

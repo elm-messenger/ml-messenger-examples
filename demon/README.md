@@ -44,9 +44,20 @@ Progress is kept in the browser's `localStorage`.
 | R | reset the level (undoable) |
 | T | show heat links: a dot on every conducting contact |
 | Enter | next level (after solving) |
-| Esc | back to the level select / title |
+| Esc | back to the level select / title; on the title, settings |
+| O | settings (also the gear in the top-right corner) |
+| F11 | toggle fullscreen (desktop) |
 
 The mouse works on every button and tile.
+
+### Settings
+
+The settings panel opens over any screen and pauses input to it. It has the
+master volume (Left/Right in tenths, or drag the slider), fullscreen, erasing
+the saved progress (press twice), Resume and Quit. Fullscreen and Quit are
+desktop only: the browser host ignores fullscreen, and quitting would only
+freeze the page. The choices are saved under `maxwell.settings` and applied
+at start.
 
 ## How the board reads
 
@@ -72,6 +83,7 @@ tools/trace.ml         prints the CLI's trace format, for tools/difftest.py
 src/app.ml             config, resources, scenes, global components
 src/board_view.ml      draws a board (also used by the select-screen preview)
 src/progress.ml        global component: loads saved progress at start
+src/settings.ml        global component: the settings panel and its gear
 src/clock.ml           forward-only clock for animations
 src/scenes/title       title screen
 src/scenes/select      level select; tile/ is one level's button

@@ -70,7 +70,7 @@ type button = { text : string; hint : string; bx : float; by : float; bw : float
 let button_inside (mx, my) b =
   mx >= b.bx && mx <= b.bx +. b.bw && my >= b.by && my <= b.by +. b.bh
 
-let draw_button ?(focus = false) ?(accent = Pal.gold) b =
+let draw_button ?(focus = false) ?(accent = Pal.gold) ?(bg = Pal.panel) b =
   let cx = b.bx +. (b.bw /. 2.) and cy = b.by +. (b.bh /. 2.) in
   let size = 19. in
   let tw = mono_width size b.text in
@@ -79,7 +79,7 @@ let draw_button ?(focus = false) ?(accent = Pal.gold) b =
   Regl_common.group []
     [
       (if focus then rounded_rect (cx, cy) (b.bw +. 6., b.bh +. 6.) 13. accent else empty);
-      rounded_rect (cx, cy) (b.bw, b.bh) 11. (if focus then Pal.panel_edge else Pal.panel);
+      rounded_rect (cx, cy) (b.bw, b.bh) 11. (if focus then Pal.panel_edge else bg);
       mono_text ~font:mono_bold (x0, cy) size b.text (if focus then Pal.cream else Pal.cream_dim);
       (if b.hint = "" then empty
        else
