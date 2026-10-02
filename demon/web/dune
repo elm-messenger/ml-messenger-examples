@@ -1,0 +1,7 @@
+; The browser build: the same game library on the js_of_ocaml backend.
+; web/serve.sh assembles and serves the page.
+
+(executable
+ (name main)
+ (modes js)
+ (libraries regl_js game))

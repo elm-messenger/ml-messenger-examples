@@ -1,0 +1,9 @@
+; Drives the whole app headlessly: links the desktop backend but never calls
+; Ui.gen_main, so no window opens. The level files are fed in as the host's
+; replies would be.
+
+(test
+ (name check)
+ (libraries regl_desktop game)
+ (deps
+  (glob_files %{project_root}/assets/levels/*.txt)))

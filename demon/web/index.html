@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maxwell's Puzzling Demon</title>
+  <style>
+    html, body { margin: 0; width: 100%; height: 100%; background: #0d0a12; overflow: hidden; }
+    body { display: grid; place-items: center; }
+    /* 16:9, as large as the window allows */
+    canvas { width: min(100vw, calc(100vh * 16 / 9)); aspect-ratio: 16 / 9; display: block; }
+  </style>
+  <script src="regl.js"></script>
+  <script src="main.bc.js"></script>
+</head>
+<body>
+  <canvas id="game"></canvas>
+  <script>
+    const canvas = document.getElementById("game");
+    canvas.width = 1920;
+    canvas.height = 1080;
+    MlREGL.init(canvas, MlApp, []);
+    MlApp.init();
+  </script>
+</body>
+</html>

@@ -1,0 +1,5 @@
+; The executable only picks the backend; the game is the [game] library.
+
+(executable
+ (name main)
+ (libraries regl_desktop game))

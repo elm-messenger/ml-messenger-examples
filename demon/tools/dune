@@ -1,0 +1,5 @@
+; Prints the same trace as sample/maxwell, for diffing the port against it.
+
+(executable
+ (name trace)
+ (libraries rules))

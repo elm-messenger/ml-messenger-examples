@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128">
+  
+  <g stroke="#1a0f2e" stroke-width="3.2" stroke-linejoin="round" stroke-linecap="round">
+    <!-- tail -->
+    <path d="M30 96 C 10 96 6 74 16 62" fill="none" stroke-width="5"/>
+    <path d="M16 62 L6 64 L14 48 L24 62 Z" fill="#6b37c4"/>
+    <!-- wings -->
+    <path d="M30 66 C 18 54 10 50 4 52 C 10 58 8 64 12 68 C 16 66 20 70 18 76 C 24 74 28 76 30 80 Z" fill="#5a2aa8"/>
+    <path d="M98 66 C 110 54 118 50 124 52 C 118 58 120 64 116 68 C 112 66 108 70 110 76 C 104 74 100 76 98 80 Z" fill="#5a2aa8"/>
+    <!-- horns -->
+    <path d="M42 42 C 32 30 32 16 40 6 C 42 18 50 26 56 34 Z" fill="#f4e7c8"/>
+    <path d="M86 42 C 96 30 96 16 88 6 C 86 18 78 26 72 34 Z" fill="#f4e7c8"/>
+    <!-- feet -->
+    <ellipse cx="48" cy="114" rx="11" ry="6" fill="#6b37c4"/>
+    <ellipse cx="80" cy="114" rx="11" ry="6" fill="#6b37c4"/>
+    <!-- body -->
+    <path d="M64 28 C 92 28 106 50 106 76 C 106 100 90 114 64 114 C 38 114 22 100 22 76 C 22 50 36 28 64 28 Z" fill="#9a5cf5"/>
+  </g>
+  <ellipse cx="66" cy="90" rx="25" ry="18" fill="#c9a6ff"/>
+  <path d="M34 50 C 40 38 52 33 62 33" fill="none" stroke="#ffffff" stroke-opacity="0.35" stroke-width="5" stroke-linecap="round"/>
+  <g stroke="#1a0f2e" stroke-width="2.5">
+    <ellipse cx="51" cy="63" rx="11" ry="12.5" fill="#fffaf0"/>
+    <ellipse cx="78" cy="63" rx="11" ry="12.5" fill="#fffaf0"/>
+  </g>
+  <circle cx="54" cy="64" r="7" fill="#ffc93c"/><circle cx="81" cy="64" r="7" fill="#ffc93c"/>
+  <ellipse cx="55" cy="64" rx="2.4" ry="5" fill="#140a1f"/><ellipse cx="82" cy="64" rx="2.4" ry="5" fill="#140a1f"/>
+  <circle cx="51" cy="60" r="2" fill="#ffffff"/><circle cx="78" cy="60" r="2" fill="#ffffff"/>
+  <g stroke="#1a0f2e" stroke-width="4" stroke-linecap="round" fill="none"><path d="M41 47 L60 54" /><path d="M89 47 L71 54" /></g>
+  <path d="M50 82 Q 66 96 84 80" fill="none" stroke="#1a0f2e" stroke-width="3.5" stroke-linecap="round"/><path d="M72 88 L76 96 L79 86 Z" fill="#ffffff" stroke="#1a0f2e" stroke-width="1.5" stroke-linejoin="round"/>
+  
+</svg>

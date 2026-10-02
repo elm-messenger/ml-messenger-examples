@@ -1,0 +1,5 @@
+; The game rules, independent of any framework, so tools and tests can use
+; them without a backend.
+
+(library
+ (name rules))
